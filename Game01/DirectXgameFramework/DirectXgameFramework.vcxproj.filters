@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Framework\Camera.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\DebugCamera.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Game.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Grid.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Line.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Window.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj3d\Collision.cpp">
+      <Filter>Obj3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj3d\CollisionNode.cpp">
+      <Filter>Obj3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj3d\FollowCamera.cpp">
+      <Filter>Obj3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj3d\LandShape.cpp">
+      <Filter>Obj3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj3d\LandShapeData.cpp">
+      <Filter>Obj3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj3d\Obj3d.cpp">
+      <Filter>Obj3d</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="YasuLib\Manager\InputManager.cpp">
+      <Filter>Yasulib</Filter>
+    </ClCompile>
+    <ClCompile Include="YasuLib\Manager\ModelManager.cpp">
+      <Filter>Yasulib</Filter>
+    </ClCompile>
+    <ClCompile Include="YasuLib\Manager\TextureManager.cpp">
+      <Filter>Yasulib</Filter>
+    </ClCompile>
+    <ClCompile Include="YasuLib\Utility\Utility.cpp">
+      <Filter>Yasulib</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp" />
+    <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="DebugManager.cpp" />
+    <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="AttackCommand.cpp" />
+    <ClCompile Include="DefendCommand.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Framework\Camera.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\DebugCamera.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Game.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Grid.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Line.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Window.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj3d\Collision.h">
+      <Filter>Obj3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj3d\CollisionNode.h">
+      <Filter>Obj3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj3d\FollowCamera.h">
+      <Filter>Obj3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj3d\LandShape.h">
+      <Filter>Obj3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj3d\LandShapeData.h">
+      <Filter>Obj3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj3d\Obj3d.h">
+      <Filter>Obj3d</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="YasuLib\Manager\InputManager.h">
+      <Filter>Yasulib</Filter>
+    </ClInclude>
+    <ClInclude Include="YasuLib\Manager\ModelManager.h">
+      <Filter>Yasulib</Filter>
+    </ClInclude>
+    <ClInclude Include="YasuLib\Manager\TextureManager.h">
+      <Filter>Yasulib</Filter>
+    </ClInclude>
+    <ClInclude Include="YasuLib\Utility\Utility.h">
+      <Filter>Yasulib</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h" />
+    <ClInclude Include="Panel.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="DebugManager.h" />
+    <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="AttackCommand.h" />
+    <ClInclude Include="DefendCommand.h" />
+    <ClInclude Include="TimeManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{f8a1708c-f057-44a8-80f0-95f188e8af94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{7c0ff27a-5289-4403-94da-aac72f04ccfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj3d">
+      <UniqueIdentifier>{7913a7ed-cb49-43d2-971f-e74d61fbc58b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{823eaaa4-4f83-41e2-be7b-2097fdaa8589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Yasulib">
+      <UniqueIdentifier>{8b996e06-a8e0-4679-8e2b-3d5a6027f94d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Assets\Box.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Ball.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Box2.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Panel1.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="RedBall.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Enemy01.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Panel2.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+  </ItemGroup>
+</Project>
