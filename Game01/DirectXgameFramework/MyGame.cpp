@@ -102,10 +102,11 @@ void MyGame::Update(StepTimer const & timer)
 	DebugManager::GetInstance()->Reset();
 
 	m_timeMan->Update();
-
 	m_camera->Update();
 
 	m_floor->Update();
+
+
 	m_player->Update();
 
 	for (auto& enm : m_enemy)

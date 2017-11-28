@@ -73,7 +73,7 @@ void Enemy::Update()
 		cnt = 0;
 	}
 
-
+	// プレイヤーと隣接していたらダメージを食らう
 	if (isAdjoining)
 		TakeDamage();
 	

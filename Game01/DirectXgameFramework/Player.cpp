@@ -54,7 +54,7 @@ void Player::Init()
 
 void Player::Update()
 {
-	float time = 0;
+	static float time = 0;
 	if(m_isMoving)
 		time += 1 / 60.0f * 1.5f;
 
