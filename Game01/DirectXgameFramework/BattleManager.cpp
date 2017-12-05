@@ -5,6 +5,7 @@
 
 BattleManager* BattleManager::s_instance = nullptr;
 BattleManager::BattleManager()
+	:m_turnState(TurnID::PLAYER_MOVE)
 {
 }
 
@@ -33,15 +34,39 @@ BattleManager::~BattleManager()
 
 void BattleManager::Update()
 {
-	// 接敵かつプレイヤがアタック状態
-	for (auto& enemy : m_enemies)
+	switch (m_turnState)
 	{
-		auto flag = (m_player->GetState() & Panel::State::ATTACK);
-		if (enemy->CheckPlayer(m_player) && flag)
+	case BattleManager::PLAYER_MOVE:
+		m_player->Move();
+		if (m_player->IsMoving())
 		{
-			enemy->SetFlag(true);
+			//m_turnState = BattleManager::PLAYER_ACTION;
 		}
+
+		// 接敵かつプレイヤがアタック状態
+		for (auto& enemy : m_enemies)
+		{
+			int flag = (m_player->GetState() & Panel::State::ATTACK);
+			if (enemy->CheckPlayer(m_player) && flag)
+			{
+				enemy->SetFlag(true);
+			}
+		}
+		break;
+	case BattleManager::PLAYER_ACTION:
+
+
+		break;
+	case BattleManager::ENEMY_MOVE:
+		break;
+	case BattleManager::ENEMY_ACTION:
+		break;
+	default:
+		break;
 	}
+
+
+
 
 
 }

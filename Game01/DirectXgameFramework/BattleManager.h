@@ -14,6 +14,15 @@
 class BattleManager
 {
 public:
+	enum TurnID
+	{
+		PLAYER_MOVE,
+		PLAYER_ACTION,
+		ENEMY_MOVE,
+		ENEMY_ACTION,
+
+		ALL_TURNS
+	};
 	~BattleManager();
 
 	void Update();
@@ -40,6 +49,7 @@ private:
 private:
 	Player* m_player;
 	std::vector<Enemy*> m_enemies;
+	TurnID m_turnState;
 private:
 	BattleManager();
 

@@ -5,6 +5,7 @@
 #include "Panel.h"
 #include "YasuLib\Utility\Utility.h"
 #include "AttackCommand.h"
+#include "EnergyEmitter.h"
 
 using namespace std;
 using namespace DirectX;
@@ -35,6 +36,7 @@ void Panel::Initialze(Obj3d* parent)
 	m_command = std::make_unique<AttackCommand>();
 
 	m_state = State::DEFAULT;
+
 }
 
 void Panel::Update()
@@ -53,11 +55,24 @@ void Panel::Update()
 
 	// ƒRƒ}ƒ“ƒhˆ—
 	m_state = State::DEFAULT;
-	if (m_normalVec == Vector3(0, -1.000000f, 0.0f))
+	if (m_normalVec == Vector3(0.0f, -1.0f, 0.0f))
 	{
 		m_state = m_state | State::ATTACK;
 		m_command->Action();
+		
+		m_emitter = std::make_unique<EnergyEmitter>(this->m_model->GetParent()->GetTranslation(), Vector3::Zero, 1);
+		m_emitter->Load("energy", L"Resources/kamehame2.png");
 	}
+
+	if (m_emitter != nullptr)
+	{
+		m_emitter->Update();
+		if (m_emitter->GetEndFlag())
+		{
+			m_emitter = nullptr;
+		}
+	}
+
 }
 
 void Panel::Draw()

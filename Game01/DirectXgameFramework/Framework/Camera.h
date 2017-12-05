@@ -30,6 +30,11 @@ protected:
 	// ファークリップ
 	float m_farClip;
 
+	// ビルボード行列
+	DirectX::SimpleMath::Matrix m_Billboard;
+	// ビルボード行列(Y軸周り限定）
+	DirectX::SimpleMath::Matrix m_BillboardConstrainY;
+
 public:
 	Camera();
 	Camera(int width, int height, const DirectX::SimpleMath::Vector3& eye, const DirectX::SimpleMath::Vector3& target);
@@ -46,16 +51,10 @@ public:
 	const DirectX::SimpleMath::Matrix& GetProj();
 
 	// 視点座標設定
-	void SetEyePos(const DirectX::SimpleMath::Vector3& eyePos)
-	{
-		m_eyePos = eyePos;
-	}
+	void SetEyePos(const DirectX::SimpleMath::Vector3& eyePos){ m_eyePos = eyePos; }
 
 	// 注視点座標設定
-	void SetRefPos(const DirectX::SimpleMath::Vector3& targetPos)
-	{
-		m_targetPos = targetPos;
-	}
+	void SetRefPos(const DirectX::SimpleMath::Vector3& targetPos){m_targetPos = targetPos;}
 
 	// 上ベクトル座標設定
 	void SetUpVec(const DirectX::SimpleMath::Vector3& upVec)
@@ -65,24 +64,14 @@ public:
 	}
 
 
-	void SetFovY(float fovY)
-	{
-		m_fovY = fovY;
-	}
+	void SetFovY(float fovY){ m_fovY = fovY;	}
+	void SetAspect(float aspect){m_aspect = aspect;}
+	void SetNearClip(float nearclip){m_nearClip = nearclip;}
+	void SetFarClip(float farclip){m_farClip = farclip;}
 
-	void SetAspect(float aspect)
-	{
-		m_aspect = aspect;
-	}
+	const DirectX::SimpleMath::Matrix& GetBillboard() const { return m_Billboard; }
+	const DirectX::SimpleMath::Matrix& GetBillboardConstrainY() const { return m_BillboardConstrainY; }
 
-	void SetNearClip(float nearclip)
-	{
-		m_nearClip = nearclip;
-	}
-
-	void SetFarClip(float farclip)
-	{
-		m_farClip = farclip;
-	}
-
+	// ビルボードを計算
+	void CalcBillboard();
 };

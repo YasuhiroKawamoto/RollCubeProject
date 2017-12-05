@@ -1,6 +1,6 @@
 ﻿// デバッグ用カメラクラス
 #include "DebugCamera.h"
-#include "mouse.h"
+#include "../YasuLib/Manager/InputManager.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;

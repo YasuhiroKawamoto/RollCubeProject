@@ -54,10 +54,6 @@ void Player::Init()
 
 void Player::Update()
 {
-	static float time = 0;
-	if(m_isMoving)
-		time += 1 / 60.0f * 1.5f;
-
 	// 各モデルを更新
 	for (auto& part : m_parts)
 	{
@@ -73,29 +69,39 @@ void Player::Update()
 		part.second->Update();
 	}
 
+}
 
-
-
-	int a = 0;
-	if (!m_isMoving)
+void Player::SetMap(int map[10][10])
+{
+	for (int i = 0; i<10; i++)
 	{
-		if (InputManager::GetInstance()->GetKeybordTracker()->IsKeyPressed(Keyboard::Keys::Up))
-			movingState = MOVE_DIRECTION::FRONT;
-		if (InputManager::GetInstance()->GetKeybordTracker()->IsKeyPressed(Keyboard::Keys::Down))
-			movingState = MOVE_DIRECTION::BACK;
-		if (InputManager::GetInstance()->GetKeybordTracker()->IsKeyPressed(Keyboard::Keys::Left))
-			movingState = MOVE_DIRECTION::LEFT;
-		if (InputManager::GetInstance()->GetKeybordTracker()->IsKeyPressed(Keyboard::Keys::Right))
-			movingState = MOVE_DIRECTION::RIGHT;
-
-		if (InputManager::GetInstance()->GetKeybordTracker()->IsKeyPressed(Keyboard::Keys::Space))
+		for (int j = 0; j<10; j++)
 		{
-			m_parts["main"]->SetTranslation(Vector3(0.0f, 0.5f, 0.0f));
-			m_parts["main"]->SetRotationQ(Quaternion::Identity);
-			m_parts["pivot"]->SetTranslation(Vector3(0.0f, 0.5f, 0.0f));
+			m_map[i][j] = map[i][j];
 		}
 	}
+}
 
+void Player::Move()
+{
+	static float time = 0;
+	if (m_isMoving)
+		time += 1 / 60.0f * 2.5f;
+
+	// 移動中じゃないときキー入力を受け付ける
+	if (!m_isMoving)
+	{
+		if (InputManager::GetInstance()->GetKeybordState().Up)
+			movingState = MOVE_DIRECTION::FRONT;
+		if (InputManager::GetInstance()->GetKeybordState().Down)
+			movingState = MOVE_DIRECTION::BACK;
+		if (InputManager::GetInstance()->GetKeybordState().Left)
+			movingState = MOVE_DIRECTION::LEFT;
+		if (InputManager::GetInstance()->GetKeybordState().Right)
+			movingState = MOVE_DIRECTION::RIGHT;
+	}
+
+	// 向き毎の移動処理
 	switch (movingState)
 	{
 	case Player::FRONT:
@@ -113,17 +119,8 @@ void Player::Update()
 	default:
 		break;
 	}
-}
 
-void Player::SetMap(int map[10][10])
-{
-	for (int i = 0; i<10; i++)
-	{
-		for (int j = 0; j<10; j++)
-		{
-			m_map[i][j] = map[i][j];
-		}
-	}
+	
 }
 
 /**
@@ -210,7 +207,6 @@ void Player::RotateBack(float* time)
 		movingState = NONE;
 		m_isMoving = false;
 	}
-
 }
 
 void Player::RotateLeft(float* time)
@@ -246,22 +242,13 @@ void Player::RotateLeft(float* time)
 		NormalVec.z = Utility::Roundf(NormalVec.z, 1);		
 		
 		m_panels["top"]->CalcDirection(Matrix::CreateRotationZ(XMConvertToRadians(90)));
-
-	//if (dir == DOWN_DIRECTION)
-	//{
-	//	// 攻撃(仮)
-	//	return;
-	//}
 		movingState = NONE;
 		m_isMoving = false;
 	}
-
 }
 
 void Player::RotateRight(float* time)
 {
-	static float axis = 0.5f;
-
 	if (!m_isMoving)
 	{
 		m_isMoving = CheckOnMap(Vector2(1, 0));

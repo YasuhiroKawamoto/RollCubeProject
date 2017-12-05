@@ -70,6 +70,14 @@
     <ClCompile Include="AttackCommand.cpp" />
     <ClCompile Include="DefendCommand.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="TurnManager.cpp" />
+    <ClCompile Include="Emitter.cpp" />
+    <ClCompile Include="ParticleEffect.cpp" />
+    <ClCompile Include="ParticleEffectManager.cpp" />
+    <ClCompile Include="EnergyEmitter.cpp" />
+    <ClCompile Include="BinaryFile.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera.h">
@@ -138,6 +146,14 @@
     <ClInclude Include="AttackCommand.h" />
     <ClInclude Include="DefendCommand.h" />
     <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="TurnManager.h" />
+    <ClInclude Include="Emitter.h" />
+    <ClInclude Include="ParticleEffect.h" />
+    <ClInclude Include="ParticleEffectManager.h" />
+    <ClInclude Include="EnergyEmitter.h" />
+    <ClInclude Include="BinaryFile.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FrameWork">
@@ -154,6 +170,9 @@
     </Filter>
     <Filter Include="Yasulib">
       <UniqueIdentifier>{8b996e06-a8e0-4679-8e2b-3d5a6027f94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{99b4daaa-5e7e-4527-89b3-37a2b220ba31}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -178,5 +197,21 @@
     <MeshContentTask Include="Assets\Panel2.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\Particle.hlsli">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\ParticleGS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ParticlePS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ParticleVS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

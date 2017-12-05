@@ -14,7 +14,10 @@
 #include "YasuLib\Manager\TextureManager.h"
 #include "DebugManager.h"
 #include "BattleManager.h"
-#include "TimeManager.h"
+#include "TurnManager.h"
+#include "ParticleEffectManager.h"
+#include "Obj3d\FollowCamera.h"
+
 #include <sstream>
 
 using namespace DX;
@@ -40,7 +43,7 @@ void MyGame::Initialize()
 	auto& graphics = Graphics::Get();
 
 	// カメラ作成＆初期化
-	m_camera = make_unique<Camera>(this->width, this->height, Vector3(0, 6, 8), Vector3(0, 0, 0));
+	m_camera = make_unique<FollowCamera>(this->width, this->height);
 
 	Obj3d::InitializeStatic(m_camera.get());
 
@@ -85,10 +88,13 @@ void MyGame::Initialize()
 		enemy->Update();
 	}
 
+	// マネージャの初期化
 	BattleManager::GetInstance()->SetPlayer(m_player.get());
 
 	BattleManager::GetInstance()->SetEnemies(m_enemy);
 	m_timeMan = TimeManager::GetInstance();
+
+	ParticleEffectManager::GetInstance()->Initialize(m_camera.get());
 
 }
 
@@ -102,10 +108,11 @@ void MyGame::Update(StepTimer const & timer)
 	DebugManager::GetInstance()->Reset();
 
 	m_timeMan->Update();
+
+	dynamic_cast<FollowCamera*>(m_camera.get())->SetTargetPos(m_player->m_parts["main"]->GetTranslation());
 	m_camera->Update();
 
 	m_floor->Update();
-
 
 	m_player->Update();
 
@@ -115,6 +122,8 @@ void MyGame::Update(StepTimer const & timer)
 	}
 
 	BattleManager::GetInstance()->Update();
+	ParticleEffectManager::GetInstance()->Update();
+
 }
 
 void MyGame::Render(StepTimer const & timer)
@@ -150,13 +159,15 @@ void MyGame::Render(StepTimer const & timer)
 	// 床描画
 	m_floor->Draw();
 
+	ParticleEffectManager::GetInstance()->Draw();
+
+
 	// スプライト描画
 	this->spriteBatch->Begin();
 	
-	// スプライトの描画をここに追加
-
 	//デバッグ文字の描画
 	DebugManager::GetInstance()->Draw(spriteBatch.get());
+	// スプライトの描画をここに追加
 	
 	this->spriteBatch->End();
 

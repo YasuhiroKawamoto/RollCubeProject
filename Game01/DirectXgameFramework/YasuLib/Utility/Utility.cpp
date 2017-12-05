@@ -1,6 +1,4 @@
-#include "../../pch.h"
-#include "../Utility/Utility.h"
-
+#include "Utility.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
@@ -93,7 +91,7 @@ namespace utl
 
 		float rounded;
 		int integer = num * pow(10, FLOAT_DIGITS);
-		int _array[FLOAT_DIGITS+1] = { 0 };
+		int _array[FLOAT_DIGITS + 1] = { 0 };
 
 		int i = 0;
 		// 配列に格納
@@ -111,7 +109,7 @@ namespace utl
 			_array[place - 1]--;
 
 		// 切り捨て
-		for (int i = 0; i < FLOAT_DIGITS+1; i++)
+		for (int i = 0; i < FLOAT_DIGITS + 1; i++)
 		{
 			if (i >= place)
 			{
@@ -120,14 +118,32 @@ namespace utl
 		}
 
 		// 再び小数化
-		for (int i = 0; i < FLOAT_DIGITS+1; i++)
+		for (int i = 0; i < FLOAT_DIGITS + 1; i++)
 		{
 			integer += _array[i] * pow(10, (FLOAT_DIGITS - i));
 		}
 		rounded = integer / 1000000.0f;
 
-		cout << endl;
 		return rounded;
+	}
+
+	/**
+	* @fn　RondomRange
+	* @brief 指定範囲の乱数を取得
+	* @param (float  min) 最小値
+	* @param (float max) 最大値
+	* @return (float　得た乱数)
+	*/
+	float Utility::RandomRange(float min, float max)
+	{
+		std::random_device rd;
+		std::mt19937 mt(rd());
+
+		// 最小値 が最大値より大きい場合値を入れ替える
+		if (min > max)	Swap(&min, &max);
+
+		std::uniform_real_distribution<float> myRand(min, max);
+		return myRand(mt);
 	}
 
 

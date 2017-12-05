@@ -33,6 +33,7 @@ private:
 	std::unique_ptr<Floor> m_floor;
 
 	TimeManager* m_timeMan;
+	
 public:
 	// コンストラクタ 
 	MyGame(int width, int height);

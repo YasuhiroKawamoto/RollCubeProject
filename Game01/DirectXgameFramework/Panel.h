@@ -3,7 +3,7 @@
 
 #include "Obj3d\Obj3d.h"
 #include "Command.h"
-
+#include "Emitter.h"
 
 class Panel
 {
@@ -11,17 +11,9 @@ public:
 
 	enum State
 	{
-		DEFAULT = 0b000000,
-		ATTACK	= 0b000001,
-		GUARD	= 0b000010,
-
-	};
-	enum Points
-	{
-		ORIGIN,
-		P1,
-		P2,
-		POINT_NUM
+		DEFAULT = 0, // 0b00000000
+		ATTACK	= 1, // 0b00000001
+		GUARD	= 2, // 0b00000010
 	};
 public:
 	Panel();
@@ -50,10 +42,10 @@ private:
 	std::unique_ptr<Obj3d> m_model;
 	// コマンド
 	std::unique_ptr<Command> m_command;
-
+	// 状態
 	int m_state;
 
-private:
-
+	// エフェクトエミッタ
+	std::unique_ptr<Emitter> m_emitter;
 };
 

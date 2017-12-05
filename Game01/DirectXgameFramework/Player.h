@@ -21,16 +21,6 @@ public:
 		RIGHT
 	};
 
-	struct RotateInfo
-	{
-		Vector2 vec2d;
-		float startAngle;
-		float endAngle;
-
-
-
-
-	};
 public:
 	std::map<string, std::unique_ptr<Obj3d>> m_parts;
 	std::map<string, std::unique_ptr<Panel>> m_panels;
@@ -45,23 +35,17 @@ public:
 	void Init();
 	void Draw();
 	void Update();
+	void Move();
 
-	bool IsMoving()
-	{
-		return m_isMoving;
-	}
 
-	int GetState()
-	{
-		return m_state;
-	}
-
+	bool IsMoving(){ return m_isMoving;	}
+	int GetState(){	return m_state;}
 	void SetMap(int map[10][10]);
 
 	MOVE_DIRECTION movingState;
 
 private:
-	void Rotate(MOVE_DIRECTION dir, float* time);
+	//void Rotate(MOVE_DIRECTION dir, float* time);
 	
 
 private:
